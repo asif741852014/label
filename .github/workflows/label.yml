@@ -1,0 +1,17 @@
+# .github/workflows/on-label.yml
+name: Label Event Trigger
+
+on:
+  label:
+    types: [created, edited, deleted]
+
+jobs:
+  handle-label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Label Event
+        run: |
+          echo "A label event was triggered!"
+          echo "Label name: ${{ github.event.label.name }}"
+          echo "Action: ${{ github.event.action }}"
